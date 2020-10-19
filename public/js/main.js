@@ -16,4 +16,11 @@ $(document).ready(function(){
             });
         }
     });
+
+    $('.edit-berita').on('click', function(){
+        $('#edit-form-judul_berita').val($(this).data('judul_berita'));
+        $('#edit-form-konten').val($(this).data('konten'));
+        $('#edit-form-kategori').val($(this).data('kategori'));
+        $('#edit-form-id').val($(this).data('id'));
+    });
 });

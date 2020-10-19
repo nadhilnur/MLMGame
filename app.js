@@ -55,11 +55,17 @@ app.post('/add', function(req,res){
     res.redirect('/');
 });
 
-app.delete('/delete/:id', function(re,res){
-    client.query("DELETE FROM berita WHERE id = $1", [req.params.id]);
+app.delete('/delete/:id', function(req,res){
+    client.query("DELETE FROM berita WHERE id=$1", [req.params.id]);
 
     res.send(200);
-})
+});
+
+app.post('/edit', function(req,res){
+    client.query("UPDATE berita SET judul_berita=$1, konten=$2, kategori=$3 WHERE id=$4", [req.body.judul_berita, req.body.konten, req.body.kategori, req.body.id]);
+
+    res.redirect('/');
+});
 
 app.listen(3000, function(){
     console.log('Server started on port 3000');
